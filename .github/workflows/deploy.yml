@@ -11,7 +11,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: /gcp
+        working-directory: /home
 
     steps:
       - name: Setup Node.js
@@ -31,6 +31,8 @@ jobs:
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
           echo "${{ secrets.SSH_PUB_KEY }}" > ~/.ssh/id_rsa.pub
           chmod 600 ~/.ssh/id_rsa
+          cat ~/.ssh/id_rsa
+          cat ~/.ssh/known_hosts
 
           
       - name: Register SSH
