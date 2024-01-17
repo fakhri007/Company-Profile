@@ -16,7 +16,7 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
-        
+
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
@@ -34,7 +34,7 @@ jobs:
           touch ~/.ssh/id_rsa
 
       - name: SSH into GCP VM
-        run: ssh -i echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa gcp@34.69.159.152 && cd /home/gcp/
+        run: ssh -i ${{ secrets.SSH_PRIVATE_KEY }} gcp@34.69.159.152 && cd /home/gcp/
       
       - name: Build Nextjs
         run:  git pull origin master && npm install && sudo npm run build && pm2 restart npm 
