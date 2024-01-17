@@ -31,13 +31,13 @@ jobs:
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
           echo "${{ secrets.SSH_PUB_KEY }}" > ~/.ssh/id_rsa.pub
           chmod 600 ~/.ssh/id_rsa
-          touch ~/.ssh/id_rsa
+          cat ~/.ssh/known_hosts
           
       - name: Register SSH
         run: ssh-keyscan -H 34.69.159.152 >> ~/.ssh/known_hosts
 
       - name: SSH into GCP VM
-        run: ssh -i ${{ secrets.SSH_PRIVATE_KEY }} gcp@34.69.159.152 && cd /home/gcp/
+        run: ssh -i ~/.ssh/id_rsa gcp@34.69.159.152 && cd /home/gcp/
       
       - name: Build Nextjs
         run:  git pull origin master && npm install && sudo npm run build && pm2 restart npm 
