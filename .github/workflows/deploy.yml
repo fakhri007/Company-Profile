@@ -11,7 +11,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: /
+        working-directory: /gcp
 
     steps:
       - name: Setup Node.js
