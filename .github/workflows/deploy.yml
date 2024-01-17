@@ -23,6 +23,10 @@ jobs:
     - name: auth Google Cloud SDK
       run: echo '${{ secrets.GCP_SA_KEY }}' | gcloud auth activate-service-account --key-file=<(cat)
 
+    - name: set SSH key
+      run: echo '${{ secrets.SSH_PRIVATE_KEY }}' | gcloud config set core/private_key_file <(cat)
+      
+
     - name: Deploy to GCP VM
       run: |
         gcloud compute ssh --zone=us-central1-c	 fr-1 --command="cd /home/gcp/company-profile  && git pull origin master && ./deploy.sh"
