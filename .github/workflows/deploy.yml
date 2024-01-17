@@ -30,3 +30,4 @@ jobs:
           instance_name: fr-1
           zone: us-central1-c  # Replace with your zone
           ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
+          command: 'echo "Hello, World!"'
