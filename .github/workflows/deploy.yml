@@ -28,4 +28,4 @@ jobs:
         run: |
           gcloud auth activate-service-account --key-file=<(echo "$SERVICE_ACCOUNT_KEY")
           scp -i <(echo "$SSH_PRIVATE_KEY") -r ./* user@$VM_IP:/path/to/your/nextjs/app
-          ssh -i <(echo "$SSH_PRIVATE_KEY") user@$VM_IP 'bash -s' < ./deploy.sh
+          ssh -i <(echo "$SSH_PRIVATE_KEY") gcp@$VM_IP 'bash -s' < ./deploy.sh
