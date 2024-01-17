@@ -10,6 +10,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      - name: Install pm2
+        run: npm install -g pm2
+        
       - name: Checkout Repository
         uses: actions/checkout@v2
 
