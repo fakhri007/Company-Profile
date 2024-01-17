@@ -32,11 +32,10 @@ jobs:
           echo "${{ secrets.SSH_PUB_KEY }}" > ~/.ssh/id_rsa.pub
           chmod 600 ~/.ssh/id_rsa
           cat ~/.ssh/id_rsa
-          cat ~/.ssh/known_hosts
 
           
-      - name: Register SSH
-        run: ssh-keyscan -H 34.69.159.152 >> ~/.ssh/known_hosts
+      # - name: Register SSH
+      #   run: ssh-keyscan -H 34.69.159.152 >> ~/.ssh/known_hosts
 
       - name: SSH into GCP VM
         run: ssh -i ~/.ssh/id_rsa gcp@34.69.159.152 && cd /home/gcp/
