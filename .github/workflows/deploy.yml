@@ -23,7 +23,7 @@ jobs:
         env:
           PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
           SERVICE_ACCOUNT_KEY: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
-          VM_IP: 'your_vm_ip'
+          VM_IP: '34.69.159.152'
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
         run: |
           gcloud auth activate-service-account --key-file=<(echo "$SERVICE_ACCOUNT_KEY")
