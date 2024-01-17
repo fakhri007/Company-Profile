@@ -1,6 +1,4 @@
 # deploy.sh
-cd /path/to/your/nextjs/app
-git pull origin main
 npm install
-npm run build
-npm run start
+sudo npm run build
+sudo npm run start -- -p 80
