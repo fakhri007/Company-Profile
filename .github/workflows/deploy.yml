@@ -36,7 +36,7 @@ jobs:
           username: 'fr-1'
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           source: "out/"  # Adjust based on your Next.js build output
-          target: "/company-profile"  # Adjust based on your server directory structure
+          target: "home/gcp/company-profile"  # Adjust based on your server directory structure
 
       - name: SSH into GCP VM and Restart App
         uses: appleboy/ssh-action@master
@@ -45,5 +45,5 @@ jobs:
           username: 'fr-1'
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            cd /company-profile
+            cd home/gcp/company-profile
             pm2 restart your-app-name  # Use the process manager you prefer
