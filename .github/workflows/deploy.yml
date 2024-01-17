@@ -25,4 +25,4 @@ jobs:
 
     - name: Deploy to GCP VM
       run: |
-        gcloud compute ssh --zone=us-central1-c	 fr-1 --command="cd /home/gcp/company-profile && git pull origin master && ./deploy.sh"
+        gcloud compute ssh --zone=us-central1-c	 fr-1 --command="cd /home/gcp/company-profile && git config --global --add safe.directory /home/gcp/company-profile && git pull origin master && ./deploy.sh"
