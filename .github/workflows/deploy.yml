@@ -29,12 +29,14 @@ jobs:
         uses: webfactory/ssh-agent@v0.5.3
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+        env:
+          SSH_PRIVATE_KEY: ${{secrets.SSH_PRIVATE_KEY}}
 
       - name: Add Host Key
-        run: ssh-keyscan -H 34.69.159.152 >> ~/.ssh/known_hosts
+        run: ssh-keyscan -H 34.69.159.152 openssh >> ~/.ssh/known_hosts
 
       - name: SSH into GCP VM
-        run: ssh -i ${{ secrets.SSH_PRIVATE_KEY }} gcp@34.69.159.152 && cd /home/gcp/
+        run: ssh -i SSH_PRIVATE_KEY gcp@34.69.159.152 && cd /home/gcp/
       
       - name: Build Nextjs
         run:  git pull origin master && npm install && sudo npm run build && pm2 restart npm 
