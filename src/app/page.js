@@ -2,6 +2,6 @@ import Image from 'next/image'
 
 export default function Home() {
   return (
-    <div>hello universe</div>
+    <div>hello universal</div>
   )
 }
