@@ -9,7 +9,6 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     needs: build
-
     steps:
       - name: SSH into GCP VM and Restart App
         uses: appleboy/ssh-action@master
