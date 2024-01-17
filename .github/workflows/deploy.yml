@@ -10,17 +10,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
+    - name: Checkout Repository
+      uses: actions/checkout@v2
 
-      - name: SSH into GCP VM and Restart App
-        uses: appleboy/ssh-action@master
-        with:
-          host: '34.69.159.152'
-          username: 'fr-1'
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          script: |
-            cd home/gcp/company-profile
-            git pull
-            npm run build
-            sudo pm2 start npm -- run start -- --port 80  # Use the process manager you prefer
+    - name: Set up Google Cloud SDK
+      uses: google-github-actions/setup-gcloud@master
+      with:
+        service_account_key: ${{ secrets.GCP_SA_KEY }}
+        project_id: ${{ secrets.GCP_PROJECT_ID }}
+        export_default_credentials: true
+
+    - name: Deploy to GCP VM
+      run: |
+        gcloud compute ssh --zone=us-central1-c	 fr-1 --command="cd /path/to/your/app && git pull origin master && ./deploy.sh"
