@@ -1,17 +1,22 @@
-name: CI/CD with Next.js and GCP VM
+name: CI/CD for Next.js
 
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
 
       - name: Install Dependencies
         run: npm install
@@ -19,13 +24,26 @@ jobs:
       - name: Build Next.js App
         run: npm run build
 
-      - name: Deploy to GCP VM
-        env:
-          PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
-          SERVICE_ACCOUNT_KEY: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
-          VM_IP: '34.69.159.152'
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-        run: |
-          gcloud auth activate-service-account --key-file=<(echo "$SERVICE_ACCOUNT_KEY")
-          scp -i <(echo "$SSH_PRIVATE_KEY") -r ./* gcp@$VM_IP:/company-profile
-          ssh -i <(echo "$SSH_PRIVATE_KEY") gcp@$VM_IP 'bash -s' < ./deploy.sh
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - name: Copy Files to GCP VM
+        uses: appleboy/scp-action@master
+        with:
+          host: '34.69.159.152'
+          username: 'fr-1'
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          source: "out/"  # Adjust based on your Next.js build output
+          target: "/company-profile"  # Adjust based on your server directory structure
+
+      - name: SSH into GCP VM and Restart App
+        uses: appleboy/ssh-action@master
+        with:
+          host: '34.69.159.152'
+          username: 'fr-1'
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd /company-profile
+            pm2 restart your-app-name  # Use the process manager you prefer
