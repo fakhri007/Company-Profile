@@ -33,7 +33,7 @@ jobs:
           chmod 600 ~/.ssh/id_rsa
           touch ~/.ssh/id_rsa
       - name: Register SSH
-        run: ssh-keyscan -H 34.69.159.15
+        run: ssh-keyscan -H 34.69.159.15 >> ~/.ssh/known_hosts
 
       - name: SSH into GCP VM
         run: ssh -i ~/.ssh/id_rsa gcp@34.69.159.152 && cd /home/gcp/
