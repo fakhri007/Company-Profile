@@ -33,10 +33,10 @@ jobs:
           SSH_PRIVATE_KEY: ${{secrets.SSH_PRIVATE_KEY}}
 
       - name: Add Host Key
-        run: ssh-keyscan -H 34.69.159.152 openssh >> ~/.ssh/known_hosts
+        run: ssh-keyscan -H 34.69.159.152 openssh >> $HOME/.ssh/known_hosts
 
       - name: SSH into GCP VM
-        run: ssh -i SSH_PRIVATE_KEY gcp@34.69.159.152 && cd /home/gcp/
+        run: ssh -i ${{ env.SSH_PRIVATE_KEY }} gcp@34.69.159.152 && cd /home/gcp/
       
       - name: Build Nextjs
         run:  git pull origin master && npm install && sudo npm run build && pm2 restart npm 
