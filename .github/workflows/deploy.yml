@@ -24,8 +24,8 @@ jobs:
 
       - name: Checkout Repository
         uses: actions/checkout@v2
-        
-      - uses: google-github-actions/ssh-compute@master
+
+      - uses: google-github-actions/ssh-compute@main
         with:
           instance_name: fr-1
           zone: us-central1-c  # Replace with your zone
