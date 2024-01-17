@@ -32,7 +32,7 @@ jobs:
         run: echo "" > ~/.ssh/known_hosts
 
       - name: Add GCP VM Host Key to Known Hosts
-        run: ssh-keyscan -H 34.69.159.152 >> ~/.ssh/known_hosts
+        run: ssh-keyscan -H 34.69.159.152 > ~/.ssh/known_hosts
 
       - name: SSH into GCP VM
         run: ssh -i ~/.ssh/id_rsa gcp@34.69.159.152 && sudo su && cd /home/gcp/company-profile
