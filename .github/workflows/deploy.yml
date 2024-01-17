@@ -32,7 +32,7 @@ jobs:
         run: ssh-keyscan -H 34.69.159.152 >> ~/.ssh/known_hosts
 
       - name: SSH into GCP VM
-        run: ssh -i ~/.ssh/id_rsa gcp@34.69.159.152 && ls
+        run: ssh -i ~/.ssh/id_rsa gcp@34.69.159.152 && pwd
       
       - name: Build Nextjs
         run: cd /home/gcp/company-profile/ && git pull origin master && npm install && sudo npm run build && pm2 restart npm 
