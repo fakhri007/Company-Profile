@@ -46,7 +46,7 @@ jobs:
 
       - name: SSH into Google Cloud VM
         run: |
-          ssh gcp@34.69.159.15 "your_command"
+          ssh gcp@34.69.159.15
       
       - name: Build Nextjs
         run:  git pull origin master && npm install && sudo npm run build && pm2 restart npm 
