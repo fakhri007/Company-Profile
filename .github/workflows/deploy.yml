@@ -40,7 +40,7 @@ jobs:
       # - name: SSH into GCP VM
       #   run: ssh -i ~/.ssh/id_rsa gcp@34.69.159.152 && cd /home/gcp/
       - name: Set up SSH
-        - uses: webfactory/ssh-agent@v0.8.0
+      - uses: webfactory/ssh-agent@v0.8.0
           with:
             ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
