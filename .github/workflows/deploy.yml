@@ -30,7 +30,7 @@ jobs:
           touch ~/.ssh/id_rsa
 
       - name: SSH into GCP VM
-        run: ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no gcp@34.69.159.152 && sudo su && cd /home/gcp/company-profile
+        run: ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no gcp@34.69.159.152 && cd /home
       
       - name: Build Nextjs
         run:  git pull origin master && npm install && sudo npm run build && pm2 restart npm 
