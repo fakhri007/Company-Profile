@@ -44,7 +44,7 @@ jobs:
         with:
           host: 34.69.159.152
           username: gcp
-          key: ${{ secrets.SSH_PRIVATE_KEY }
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22
           script: whoami
 
