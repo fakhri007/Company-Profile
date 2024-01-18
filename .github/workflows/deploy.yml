@@ -25,20 +25,28 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
-      - name: Set Up SSH
-        run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
-          echo "${{ secrets.SSH_PUB_KEY }}" > ~/.ssh/id_rsa.pub
-          echo "${{ secrets.SSH_KNOWN_HOSTS }}" > ~/.ssh/known_hosts
-          chmod 600 ~/.ssh/id_rsa
-          cat ~/.ssh/id_rsa
+      # - name: Set Up SSH
+      #   run: |
+      #     mkdir -p ~/.ssh
+      #     echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+      #     echo "${{ secrets.SSH_PUB_KEY }}" > ~/.ssh/id_rsa.pub
+      #     echo "${{ secrets.SSH_KNOWN_HOSTS }}" > ~/.ssh/known_hosts
+      #     chmod 600 ~/.ssh/id_rsa
+      #     cat ~/.ssh/id_rsa
           
-      - name: Register SSH
-        run: ssh-keyscan -H 34.69.159.152 >> ~/.ssh/known_hosts
+      # - name: Register SSH
+      #   run: ssh-keyscan -H 34.69.159.152 >> ~/.ssh/known_hosts
 
-      - name: SSH into GCP VM
-        run: ssh -i ~/.ssh/id_rsa gcp@34.69.159.152 && cd /home/runner/ && pwd && ls -la
+      # - name: SSH into GCP VM
+      #   run: ssh -i ~/.ssh/id_rsa gcp@34.69.159.152 && cd /home/runner/ && pwd && ls -la
+      - name: executing remote ssh commands using ssh key
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: 34.69.159.152
+          username: gcp
+          key: ${{ secrets.SSH_PRIVATE_KEY }
+          port: 22
+          script: whoami
 
       - name: Build Nextjs
         run:  git pull origin master && npm install && sudo npm run build && sudo pm2 restart 0 
