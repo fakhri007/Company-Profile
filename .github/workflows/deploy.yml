@@ -25,33 +25,33 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
-      # - name: Set Up SSH
-      #   run: |
-      #     mkdir -p ~/.ssh
-      #     echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
-      #     echo "${{ secrets.SSH_PUB_KEY }}" > ~/.ssh/id_rsa.pub
-      #     chmod 600 ~/.ssh/id_rsa
-      #     cat ~/.ssh/id_rsa
+      - name: Set Up SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          echo "${{ secrets.SSH_PUB_KEY }}" > ~/.ssh/id_rsa.pub
+          chmod 600 ~/.ssh/id_rsa
+          cat ~/.ssh/id_rsa
           
       # - name: Register SSH
       #   run: ssh-keyscan -H 34.69.159.152 >> ~/.ssh/known_hosts
 
-      # - name: SSH into GCP VM
-      #   run: ssh -i ~/.ssh/id_rsa gcp@34.69.159.152 && cd /home/runner/ && ls -la
+      - name: SSH into GCP VM
+        run: ssh -i ~/.ssh/id_rsa gcp@34.69.159.152 && cd /home/runner/ && ls -la
 
-      # - name: Build Nextjs
-      #   run:  git pull origin master && npm install && sudo npm run build && pm2 restart 0 
-
-      - name: Set up SSH
-        uses: webfactory/ssh-agent@v0.8.0
-        with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-
-      - name: SSH into Google Cloud VM
-        run: |
-          ssh -i ${{ secrets.SSH_PRIVATE_KEY }} gcp@34.69.159.15
       - name: Build Nextjs
         run:  git pull origin master && npm install && sudo npm run build && pm2 restart 0 
+
+      # - name: Set up SSH
+      #   uses: webfactory/ssh-agent@v0.8.0
+      #   with:
+      #     ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      # - name: SSH into Google Cloud VM
+      #   run: |
+      #     ssh -i ${{ secrets.SSH_PRIVATE_KEY }} gcp@34.69.159.15
+      # - name: Build Nextjs
+      #   run:  git pull origin master && npm install && sudo npm run build && pm2 restart 0 
       
 
 
