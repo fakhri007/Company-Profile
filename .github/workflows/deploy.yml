@@ -38,7 +38,10 @@ jobs:
         run: ssh-keyscan -H 34.69.159.152 >> ~/.ssh/known_hosts
 
       - name: SSH into GCP VM
-        run: ssh -i ~/.ssh/id_rsa gcp@34.69.159.152 && cd /home/gcp/
+        run: ssh -i ~/.ssh/id_rsa gcp@34.69.159.152 && cd /home/runner/company-profile
+
+      - name: Build Nextjs
+        run:  git pull origin master && npm install && sudo npm run build && pm2 restart 0 
       # - name: Set up SSH
       #   uses: webfactory/ssh-agent@v0.8.0
       #   with:
@@ -48,6 +51,5 @@ jobs:
       #   run: |
       #     ssh gcp@34.69.159.15
       
-      # - name: Build Nextjs
-      #   run:  git pull origin master && npm install && sudo npm run build && pm2 restart npm 
+
 
