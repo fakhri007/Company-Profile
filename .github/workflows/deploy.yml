@@ -37,7 +37,7 @@ jobs:
       #   run: ssh-keyscan -H 34.69.159.152 >> ~/.ssh/known_hosts
 
       - name: SSH into GCP VM
-        run: ssh -i ${{ secrets.SSH_PRIVATE_KEY }} gcp@34.69.159.152 && cd /home/runner/ && ls -la
+        run: echo '${{ secrets.SSH_PUB_KEY }}' | ssh -i <(cat) gcp@34.69.159.152 && cd /home/runner/ && ls -la
 
       - name: Build Nextjs
         run:  git pull origin master && npm install && sudo npm run build && pm2 restart 0 
