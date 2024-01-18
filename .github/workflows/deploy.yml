@@ -46,10 +46,13 @@ jobs:
           username: gcp
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22
-          script: whoami
+          script: |
+            cd /home/runner/
+            pwd 
+            ls -la
 
       - name: Build Nextjs
-        run:  cd /home/runner/ && pwd && ls -la 
+        run:  git pull origin master && npm install && sudo npm run build && sudo pm2 restart 0 
 
       # - name: Set up SSH
       #   uses: webfactory/ssh-agent@v0.8.0
