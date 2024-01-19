@@ -1,4 +1,4 @@
-FROM node:18.16.0-alpine3.16 AS base
+FROM node:18.17.0-alpine AS base
 
 # 1. Install dependencies only when needed
 FROM base AS deps
@@ -39,9 +39,9 @@ COPY --from=builder --chown=nextjs:nodejs /app ./
 
 USER nextjs
 
-EXPOSE 8081
+EXPOSE 80
 
-ENV PORT 8081
+ENV PORT 80
 ENV HOSTNAME localhost
 
 CMD ["npm", "start"]
