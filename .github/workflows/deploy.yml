@@ -32,9 +32,8 @@ jobs:
             pwd 
             ls -la
             git pull origin master
-            npm install
-            sudo npm run build
-            sudo pm2 restart 0
+            docker-compose down
+            docker-compose up
       
 
 
