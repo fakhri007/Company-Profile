@@ -1,3 +1,39 @@
+# deploying all repo and run it from docker
+# name: Deploy to GCP VM 2
+
+# on:
+#   push:
+#     branches:
+#       - master
+
+# jobs:
+#   deploy:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Setup Node.js
+#         uses: actions/setup-node@v3
+#         with:
+#           node-version: '20'
+
+#       - name: Checkout Repository
+#         uses: actions/checkout@v2
+
+#       - name: executing remote ssh commands using ssh key
+#         uses: appleboy/ssh-action@v1.0.3
+#         with:
+#           host: 34.69.159.152
+#           username: gcp
+#           key: ${{ secrets.SSH_PRIVATE_KEY }}
+#           port: 22
+#           script: |
+#             cd /home/gcp/company-profile
+#             pwd 
+#             ls -la
+#             git pull origin master
+#             sudo docker compose down
+#             sudo docker compose up
+      
+
 name: Deploy to GCP VM 2
 
 on:
@@ -14,11 +50,26 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Install pm2
-        run: npm install -g pm2
-
       - name: Checkout Repository
         uses: actions/checkout@v2
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Build Next.js Project
+        run: npm run build
+
+      - name: Build Docker Image
+        run: docker build -t company-profile .
+
+      - name: Log in to Docker Hub
+        run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Push to Docker Hub
+        run: |
+          docker tag company-profile ${{ secrets.DOCKER_REGISTRY }}/company-profile:latest
+          docker push ${{ secrets.DOCKER_REGISTRY }}/company-profile:latest
+
 
       - name: executing remote ssh commands using ssh key
         uses: appleboy/ssh-action@v1.0.3
@@ -28,12 +79,11 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22
           script: |
-            cd /home/runner/company-profile
-            pwd 
-            ls -la
-            git pull origin master
-            sudo docker compose down
-            sudo docker compose up
+            cd /home/gcp/company-profile
+            docker pull ${{ secrets.DOCKER_REGISTRY }}/company-profile:latest
+            docker stop my-container || true
+            docker rm my-container || true
+            docker run -d --name my-container -p 8080:80 ${{ secrets.DOCKER_REGISTRY }}/company-profile:latest
       
 
 
