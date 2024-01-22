@@ -80,10 +80,10 @@ jobs:
           port: 22
           script: |
             cd /home/gcp/company-profile
-            docker pull ${{ secrets.DOCKER_REGISTRY }}/company-profile:latest
-            docker stop my-container || true
-            docker rm my-container || true
-            docker run -d --name my-container -p 8080:80 ${{ secrets.DOCKER_REGISTRY }}/company-profile:latest
+            sudo docker pull ${{ secrets.DOCKER_REGISTRY }}/company-profile:latest
+            sudo docker stop company-profile || true
+            sudo docker rm company-profile || true
+            sudo docker run -d --name company-profile -p 8080:80 ${{ secrets.DOCKER_REGISTRY }}/company-profile:latest
       
 
 
