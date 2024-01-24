@@ -11,12 +11,14 @@
     },
     "experiencePage":[
         {
+            "id":1,
             "companyName":"PT Bank Sinarmas, Tbk",
             "position":"Backend Developer",
             "startEndDate":"September 2021 - Now",
             "description":"Developed and maintained Digital Banking application and content media display application for all syariah branches banking.#Developed and deployed the application using java (spring boot), oracle database, and git for digital banking and  go, postgreSQL, git, and docker for content media display application.#Collaborate with frontend team and quality assurance to ensure an integrated, secure, and high‑quality code."
         },
         {
+            "id":2,
             "companyName":"PT CDC Global Informatika",
             "position":"Web Developer",
             "startEndDate":"October 2019 - September 2021",
@@ -24,37 +26,45 @@
         }
     ],
     "educationPage": [{
+        "id":1,
         "universityName":"Indonesia Computer University",
         "degree":"Bachelor Degree",
         "major":"Informatics Engineer",
         "startEndDate":"September 2015 - September 2019"
     }],
     "skillPage":[
-        {
+        {   
+            "id":1,
             "skillName":"GO",
             "score":80
         },
         {
+            "id":2,
             "skillName":"Java",
             "score":60
         },
         {
+            "id":3,
             "skillName":"PHP",
             "score":80
         },
         {
+            "id":4,
             "skillName":"MySQL",
             "score":80
         },
         {
+            "id":5,
             "skillName":"PostgreSQL",
             "score":70
         },
         {
+            "id":6,
             "skillName":"Git",
             "score":70
         },
         {
+            "id":7,
             "skillName":"Docker",
             "score":65
         }

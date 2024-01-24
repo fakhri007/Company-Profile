@@ -1,5 +1,5 @@
 
-const EducationPage = ({ educationPage }) => {
+const EducationPage = ({ key, educationPage }) => {
 
     return (
         <div className="h-auto min-w-full py-20 bg-gray-950" id="education">
@@ -8,7 +8,7 @@ const EducationPage = ({ educationPage }) => {
             </div>
             
             {educationPage.map(item => (
-                <div className="flex flex-col  pt-16">
+                <div className="flex flex-col  pt-16" key={item.id}>
                 <p className="text-left px-36 text-gray-400 font-normal text-3xl">{item.universityName}</p>
                 <p className="text-left px-36 text-gray-400 font-normal text-xl">{item.degree}</p>
                 <p className="text-left px-36 text-gray-400 font-normal text-xl">{item.major}</p>
