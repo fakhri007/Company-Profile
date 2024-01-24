@@ -83,7 +83,7 @@ jobs:
             sudo docker pull ${{ secrets.DOCKER_REGISTRY }}/company-profile:latest
             sudo docker stop company-profile || true
             sudo docker rm company-profile || true
-            sudo docker run -d --name company-profile -p 80:80 ${{ secrets.DOCKER_REGISTRY }}/company-profile:latest
+            sudo docker run -d --name company-profile -p 8080:80 ${{ secrets.DOCKER_REGISTRY }}/company-profile:latest
       
 
 
