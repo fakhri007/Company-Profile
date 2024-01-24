@@ -1,0 +1,62 @@
+{
+    "aboutPage":{
+        "name":" Fakhri Ramdani",
+        "about":"Experienced Software Engineer with 4 years  proficiency in Go, Java, PHP, MySQL, PostgreSQL, Git, and Docker. Skilled in designing scalable solutions, including contributions to a mission-critical backend system in Go and collaborating on Java-based microservices. Demonstrated expertise in optimizing PHP codebase, coupled with strong skills in efficient database design."
+    },
+    "contactPage":{
+        "github":"https://github.com/fakhri007",
+        "mail":"mailto:fakhriramdani4@gmail.com",
+        "linkedin":"https://id.linkedin.com/in/fakhri-ramdani-183769ab",
+        "instagram":"https://instagram.com/_fakhriramdani"
+    },
+    "experiencePage":[
+        {
+            "companyName":"PT Bank Sinarmas, Tbk",
+            "position":"Backend Developer",
+            "startEndDate":"September 2021 - Now",
+            "description":"Developed and maintained Digital Banking application and content media display application for all syariah branches banking.#Developed and deployed the application using java (spring boot), oracle database, and git for digital banking and  go, postgreSQL, git, and docker for content media display application.#Collaborate with frontend team and quality assurance to ensure an integrated, secure, and high‑quality code."
+        },
+        {
+            "companyName":"PT CDC Global Informatika",
+            "position":"Web Developer",
+            "startEndDate":"October 2019 - September 2021",
+            "description":"Developed and maintained ERP Web Application for a large scale automotive company.#Developed ERP web application using PHP (CakePHP framework), javascript, html, css, and mysql.#Translated business requirements and other design specifcations into high quality production‑ready code. #Collaborate with user, product owner, and tester to ensure a high quality production‑ready code. "
+        }
+    ],
+    "educationPage": [{
+        "universityName":"Indonesia Computer University",
+        "degree":"Bachelor Degree",
+        "major":"Informatics Engineer",
+        "startEndDate":"September 2015 - September 2019"
+    }],
+    "skillPage":[
+        {
+            "skillName":"GO",
+            "score":80
+        },
+        {
+            "skillName":"Java",
+            "score":60
+        },
+        {
+            "skillName":"PHP",
+            "score":80
+        },
+        {
+            "skillName":"MySQL",
+            "score":80
+        },
+        {
+            "skillName":"PostgreSQL",
+            "score":70
+        },
+        {
+            "skillName":"Git",
+            "score":70
+        },
+        {
+            "skillName":"Docker",
+            "score":65
+        }
+    ]
+}
