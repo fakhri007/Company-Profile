@@ -1,0 +1,21 @@
+/* styles/AnimatedBackground.module.css */
+.background {
+    z-index: -1;
+    animation: backgroundAnimation 10s infinite linear;
+    background-image: url('/bg.svg');
+    background-size: contain;
+    background-repeat: repeat;
+  }
+  
+  @keyframes backgroundAnimation {
+    0% {
+      background-color: #030712;
+    }
+    50% {
+      background-color: #3e4754;
+    }
+    100% {
+      background-color: #030712;
+    }
+  }
+  

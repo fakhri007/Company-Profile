@@ -8,6 +8,7 @@ export const metadata = {
   title: 'Fakhri Ramdani',
   description: "Fakhri Ramdani's Profile",
   
+  
 }
 
 export default function RootLayout({ children }) {
