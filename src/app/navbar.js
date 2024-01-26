@@ -7,7 +7,7 @@ const Navbar = () => {
 
 
   return (
-    <nav className=" bg-gray-800 bg-opacity-50 fixed w-full z-20 top-0 start-0">
+    <nav className=" bg-gray-800 backdrop-blur-sm bg-opacity-50 fixed w-full z-20 top-0 start-0">
       {/* <nav className=" p-5"> */}
       {/* <div className="container mx-auto"> */}
       <div className="flex items-center justify-between">

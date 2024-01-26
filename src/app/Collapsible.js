@@ -35,7 +35,7 @@ const NavbarCollapse = () => {
                     <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 1h15M1 7h15M1 13h15" />
                 </svg>
             </button>
-            <div className={` ${isMenuOpen ? 'block' : 'hidden'} w-full `} id="navbar-hamburger">
+            <div className={` ${isMenuOpen ? 'block md:hidden' : 'hidden'} w-full `} id="navbar-hamburger">
                 <ul className="flex flex-col font-medium mt-4 rounded-lg flex-1 bg-transparent">
                     <li>
                         <a href="#about" onClick={() => setIsMenuOpen(!isMenuOpen)} data-te-smooth-scroll-init className="bg-transparent block py-2 px-3 rounded text-gray-400 font-medium">About</a>
