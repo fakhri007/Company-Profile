@@ -16,13 +16,13 @@ import styles from './AnimatedBackground.module.css'; // Import styles
 export default function Home() {
 
   return (
-    <div className={`${styles.background} min-h-screen min-w-full`}>
+    <div className={`${styles.background} md:bg-[url('/bg.svg')] min-h-screen  bg-no-repeat  bg-cover md:bg-contain lg:bg-automin-w-full `}>
       <Navbar />
       <AboutPage name={data.aboutPage.name} about={data.aboutPage.about} />
-      <div className="min-h-[120vh] min-w-full bg-gray-950">
-        <div className="flex flex-col items-center pt-16 h-[35vh]">
-          <a href="#contact" className="bg-transparent  hover:bg-gray-500 text-gray-800 font-bold hover:text-gray-950 py-2 px-4 border border-gray-700 hover:border-transparent rounded" >
-            READ MORE
+      <div className="min-h-[100vh] md:min-h-[110vh] min-w-full bg-gray-950">
+        <div className="flex flex-col items-center pt-32 h-[30vh]">
+          <a href="#contact" className="bg-transparent  hover:bg-gray-500 text-gray-400 font-bold hover:text-gray-950 py-3 px-5 border border-gray-500 hover:border-transparent rounded" >
+            DOWNLOAD CV
           </a>
         </div>
         <ContactPage github={data.contactPage.github} mail={data.contactPage.mail} linkedin={data.contactPage.linkedin} instagram={data.contactPage.instagram} />

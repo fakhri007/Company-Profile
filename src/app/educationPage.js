@@ -9,10 +9,10 @@ const EducationPage = ({ key, educationPage }) => {
             
             {educationPage.map(item => (
                 <div className="flex flex-col  pt-16" key={item.id}>
-                <p className="text-left px-36 text-gray-400 font-normal text-3xl">{item.universityName}</p>
-                <p className="text-left px-36 text-gray-400 font-normal text-xl">{item.degree}</p>
-                <p className="text-left px-36 text-gray-400 font-normal text-xl">{item.major}</p>
-                <p className="text-left px-36 text-gray-400 text-xl font-thin">{item.startEndDate}</p>
+                <p className="text-left px-10 md:px-36 text-gray-400 font-normal text-3xl">{item.universityName}</p>
+                <p className="text-left px-10 md:px-36 text-gray-400 font-normal text-xl">{item.degree}</p>
+                <p className="text-left px-10 md:px-36 text-gray-400 font-normal text-xl">{item.major}</p>
+                <p className="text-left px-10 md:px-36 text-gray-400 text-xl font-thin">{item.startEndDate}</p>
                 </div>
             ))}
                 

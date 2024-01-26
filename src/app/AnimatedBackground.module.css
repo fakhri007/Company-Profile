@@ -2,8 +2,7 @@
 .background {
     z-index: -1;
     animation: backgroundAnimation 10s infinite linear;
-    background-image: url('/bg.svg');
-    background-size: contain;
+    /* background-image: url('/bg.svg'); */
     background-repeat: repeat;
 }
 
