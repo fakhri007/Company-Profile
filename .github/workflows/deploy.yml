@@ -80,6 +80,7 @@ jobs:
           port: 22
           script: |
             cd /home/gcp/company-profile
+            sudo docker rmi -f fakhri007/company-profile || true
             sudo docker pull ${{ secrets.DOCKER_REGISTRY }}/company-profile:latest
             sudo docker stop company-profile || true
             sudo docker rm company-profile || true
